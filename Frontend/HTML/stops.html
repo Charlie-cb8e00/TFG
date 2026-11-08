@@ -137,30 +137,30 @@
 
     <!-- TABBAR -->
     <nav class="tabbar d-flex justify-content-around align-items-center">
-      <a href="#mapa" class="tab text-decoration-none text-center">
+      <a href="#mapa" class="tab text-decoration-none text-center" onclick="irA(event, 'map.html')">
         <div class="fs-5">🗺️</div>
         <small>Mapa</small>
       </a>
-      <a href="#paradas" class="tab text-decoration-none text-center">
+      <a href="#paradas" class="tab text-decoration-none text-center" onclick="irA(event, 'stops.html')">
         <div class="fs-5">🚏</div>
         <small>Paradas</small>
       </a>
-      <a href="#inicio" class="tab tab--active text-decoration-none text-center">
+      <a href="#inicio" class="tab tab--active text-decoration-none text-center" onclick="irA(event, 'index.html')">
         <div class="fs-5">🏠</div>
         <small>Inicio</small>
       </a>
-      <a href="#monedero" class="tab text-decoration-none text-center">
+      <a href="#monedero" class="tab text-decoration-none text-center"onclick="irA(event, 'wallet.html')">
         <div class="fs-5">👛</div>
         <small>Monedero</small>
       </a>
-      <a href="#alarma" class="tab text-decoration-none text-center">
+      <a href="#alarma" class="tab text-decoration-none text-center" onclick="irA(event, 'alarms.html')">
         <div class="fs-5">🔔</div>
         <small>Alarma</small>
       </a>
     </nav>
 
   </div>
-
+  <script src="../JavaScript/script.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
