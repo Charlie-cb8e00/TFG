@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "GeoBus backend",
+      "request": "launch",
+      "mainClass": "com.geobus.GeoBusApplication",
+      "projectName": "backend",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
