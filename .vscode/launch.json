@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GeoBusApplication<GeobusBD>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.geobus.GeoBusApplication",
+            "projectName": "GeobusBD",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
