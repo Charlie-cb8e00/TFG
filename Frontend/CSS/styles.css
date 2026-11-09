@@ -49,6 +49,7 @@ body {
 .tab--active .fs-5 {
   transform: scale(1.1);
 }
+
 /* ===== PARADAS ===== */
 .stop {
   display: flex;
@@ -62,9 +63,11 @@ body {
   color: inherit;
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
+
 .stop:active {
   background: #f1f5f9;
 }
+
 .stop__line {
   width: 48px;
   height: 48px;
@@ -78,12 +81,14 @@ body {
   justify-content: center;
   flex-shrink: 0;
 }
+
 .stop__info {
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 0;
 }
+
 .stop__name {
   font-size: 0.95rem;
   font-weight: 600;
@@ -92,10 +97,12 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .stop__tags {
   display: flex;
   gap: 6px;
 }
+
 .tag {
   background: #1e3a8a;
   color: #fff;
@@ -103,4 +110,92 @@ body {
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 6px;
+}
+
+/* ===== ALARMAS ===== */
+.alarm {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.alarm:active {
+  background: #f1f5f9;
+}
+
+.alarm__time {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.alarm__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex-grow: 1;
+}
+
+.alarm__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botones de acción de la alarma */
+.alarm__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.btn-alarm {
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-alarm:active {
+  transform: scale(0.96);
+}
+
+.btn-edit {
+  background: #1e3a8a;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #1e40af;
+}
+
+.btn-delete {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #b91c1c;
 }
