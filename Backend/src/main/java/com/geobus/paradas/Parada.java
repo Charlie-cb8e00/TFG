@@ -1,3 +1,22 @@
+
+package com.geobus.paradas;
+
+import java.math.BigDecimal;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "parada")
+public class Parada {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 package com.geobus.paradas;
 
 import jakarta.persistence.Column;
@@ -26,9 +45,6 @@ public class Parada {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @NotNull
-    @DecimalMin("-90.0")
-    @DecimalMax("90.0")
     @Column(name = "latitud", nullable = false)
     private BigDecimal latitud;
 
@@ -68,7 +84,7 @@ public class Parada {
         return longitud;
     }
 
-    public Long getLineaId() {
-        return lineaId;
+    public String getCodigo() {
+        return codigo;
     }
 }
