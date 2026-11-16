@@ -41,7 +41,7 @@ function activarBotones() {
       alarmaActual.querySelector('.alarm__name').textContent = nuevoNombre;
     }
     if (nuevaParada) {
-      paradaActual.querySelector('.alarm__stop').textContent = nuevaParada;
+      alarmaActual.querySelector('.alarm__stop').textContent = nuevaParada;
     }
 
     bootstrap.Modal.getInstance(document.getElementById('modalEditar')).hide();
