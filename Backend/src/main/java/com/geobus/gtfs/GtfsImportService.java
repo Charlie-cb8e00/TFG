@@ -6,6 +6,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,7 @@ import java.util.zip.ZipFile;
  * Requiere @EnableScheduling en la clase principal si quieres la carga programada.
  */
 @Service
+@ConditionalOnProperty(prefix = "gtfs.import", name = "enabled", havingValue = "true")
 public class GtfsImportService {
 
     private static final Logger log = LoggerFactory.getLogger(GtfsImportService.class);

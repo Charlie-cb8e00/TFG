@@ -2,43 +2,57 @@ package com.geobus.paradas;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "paradas")
+@Table(name = "parada")
 public class Parada {
 
     @Id
-    @Column(name = "parada_id", nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
+    @NotBlank
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
+    @NotNull
+    @DecimalMin("-90.0")
+    @DecimalMax("90.0")
     @Column(name = "latitud", nullable = false)
     private BigDecimal latitud;
 
+    @NotNull
+    @DecimalMin("-180.0")
+    @DecimalMax("180.0")
     @Column(name = "longitud", nullable = false)
     private BigDecimal longitud;
 
-    @Column(name = "codigo")
-    private String codigo;
+    @NotNull
+    @Column(name = "linea_id", nullable = false)
+    private Long lineaId;
 
     protected Parada() {
     }
 
-    public Parada(String id, String nombre, BigDecimal latitud, BigDecimal longitud, String codigo) {
-        this.id = id;
+    public Parada(String nombre, BigDecimal latitud, BigDecimal longitud, Long lineaId) {
         this.nombre = nombre;
         this.latitud = latitud;
         this.longitud = longitud;
-        this.codigo = codigo;
+        this.lineaId = lineaId;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -54,7 +68,7 @@ public class Parada {
         return longitud;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public Long getLineaId() {
+        return lineaId;
     }
 }
