@@ -23,27 +23,19 @@ public class Parada {
     @Column(name = "id")
     private Long id;
 
-    @NotBlank
+    @Column(name = "codigo_ctmas", unique = true)
+    private Integer codigoCtmas;
+
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @NotNull
-    @DecimalMin("-90.0")
-    @DecimalMax("90.0")
-    @Column(name = "latitud", nullable = false)
+    @Column(name = "latitud")
     private BigDecimal latitud;
 
-    @NotNull
-    @DecimalMin("-180.0")
-    @DecimalMax("180.0")
-    @Column(name = "longitud", nullable = false)
+    @Column(name = "longitud")
     private BigDecimal longitud;
 
-    @NotNull
-    @Column(name = "linea_id", nullable = false)
-    private Long lineaId;
-
-    protected Parada() {
+    public Parada() {
     }
 
     public Parada(String nombre, BigDecimal latitud, BigDecimal longitud, Long lineaId) {
@@ -55,6 +47,10 @@ public class Parada {
 
     public Long getId() {
         return id;
+    }
+
+    public Integer getCodigoCtmas() {
+        return codigoCtmas;
     }
 
     public String getNombre() {
@@ -69,7 +65,19 @@ public class Parada {
         return longitud;
     }
 
-    public Long getLineaId() {
-        return lineaId;
+    public void setCodigoCtmas(Integer codigoCtmas) {
+        this.codigoCtmas = codigoCtmas;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setLatitud(BigDecimal latitud) {
+        this.latitud = latitud;
+    }
+
+    public void setLongitud(BigDecimal longitud) {
+        this.longitud = longitud;
     }
 }
