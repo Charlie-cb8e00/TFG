@@ -9,6 +9,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "parada")
@@ -16,7 +20,8 @@ public class Parada {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "codigo_ctmas", unique = true)
     private Integer codigoCtmas;
@@ -33,7 +38,14 @@ public class Parada {
     public Parada() {
     }
 
-    public Integer getId() {
+    public Parada(String nombre, BigDecimal latitud, BigDecimal longitud, Long lineaId) {
+        this.nombre = nombre;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.lineaId = lineaId;
+    }
+
+    public Long getId() {
         return id;
     }
 

@@ -11,7 +11,10 @@
   <div class="app d-flex flex-column vh-100">
     <header class="topbar d-flex align-items-center justify-content-between px-3 py-2">
       <span class="topbar__brand fw-bold">Geobus</span>
-      <span class="topbar__icon" aria-hidden="true">🔔</span>
+      <span class="topbar__actions d-flex align-items-center gap-2">
+        <span class="topbar__icon" aria-hidden="true">🔔</span>
+        <a class="topbar__auth text-decoration-none" href="auth.html">Iniciar sesión</a>
+      </span>
     </header>
 
     <h1 class="titlebar text-center fw-bold m-0">Alarmas</h1>
@@ -29,6 +32,8 @@
         </span>
       </div>
     </main>
+
+    <button type="button" class="btn-add-floating" id="btnNuevaAlarma" aria-label="Añadir alarma">+</button>
 
     <nav class="tabbar d-flex justify-content-around align-items-center" aria-label="Navegación principal">
       <a href="map.html" class="tab text-decoration-none text-center">
@@ -56,24 +61,26 @@
           <h2 class="modal-title fs-5" id="modalEditarLabel">Editar alarma</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="inputTiempoAlarma" class="form-label">Tiempo</label>
-            <input type="text" class="form-control" id="inputTiempoAlarma" placeholder="Ej: 04:50">
+        <form id="formAlarma">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="inputTiempoAlarma" class="form-label">Tiempo</label>
+              <input type="text" class="form-control" id="inputTiempoAlarma" placeholder="Ej: 04:50" required>
+            </div>
+            <div class="mb-3">
+              <label for="inputNombreAlarma" class="form-label">Nombre de la alarma</label>
+              <input type="text" class="form-control" id="inputNombreAlarma" placeholder="Escribe el nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="inputParadaAlarma" class="form-label">Parada a seguir</label>
+              <input type="text" class="form-control" id="inputParadaAlarma" placeholder="Escribe la parada" required>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="inputNombreAlarma" class="form-label">Nombre de la alarma</label>
-            <input type="text" class="form-control" id="inputNombreAlarma" placeholder="Escribe el nombre">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" id="btnConfirmarEditar">Confirmar</button>
           </div>
-          <div class="mb-3">
-            <label for="inputParadaAlarma" class="form-label">Parada a seguir</label>
-            <input type="text" class="form-control" id="inputParadaAlarma" placeholder="Escribe la parada">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" id="btnConfirmarEditar">Confirmar</button>
-        </div>
+        </form>
       </div>
     </div>
   </div>

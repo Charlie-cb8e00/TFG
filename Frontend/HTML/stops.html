@@ -11,52 +11,15 @@
   <div class="app d-flex flex-column vh-100">
     <header class="topbar d-flex align-items-center justify-content-between px-3 py-2">
       <span class="topbar__brand fw-bold">Geobus</span>
-      <span class="topbar__icon" aria-hidden="true">🚏</span>
+      <span class="topbar__actions d-flex align-items-center gap-2">
+        <span class="topbar__icon" aria-hidden="true">🚏</span>
+        <a class="topbar__auth text-decoration-none" href="auth.html">Iniciar sesión</a>
+      </span>
     </header>
 
     <h1 class="titlebar text-center fw-bold m-0">Paradas</h1>
 
-    <main class="content flex-grow-1 overflow-auto" aria-label="Lista de paradas">
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
-      <a class="stop" href="#parada">
-        <span class="stop__line">388</span>
-        <span class="stop__info"><strong class="stop__name">Avenida de Andalucía (Tussam)</strong><span class="stop__tags"><span class="tag">32</span><span class="tag">39</span></span></span>
-      </a>
+    <main class="content flex-grow-1 overflow-auto" id="listaParadas" aria-label="Paradas de la línea 242">
     </main>
 
     <nav class="tabbar d-flex justify-content-around align-items-center" aria-label="Navegación principal">
@@ -78,5 +41,6 @@
     </nav>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../JavaScript/bus-stops.js"></script>
 </body>
 </html>

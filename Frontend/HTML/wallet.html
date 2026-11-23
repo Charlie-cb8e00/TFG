@@ -11,12 +11,15 @@
   <div class="app d-flex flex-column vh-100">
     <header class="topbar d-flex align-items-center justify-content-between px-3 py-2">
       <span class="topbar__brand fw-bold">Geobus</span>
-      <span class="topbar__icon" aria-hidden="true">👛</span>
+      <span class="topbar__actions d-flex align-items-center gap-2">
+        <span class="topbar__icon" aria-hidden="true">👛</span>
+        <a class="topbar__auth text-decoration-none" href="auth.html">Iniciar sesión</a>
+      </span>
     </header>
 
     <h1 class="titlebar text-center fw-bold m-0">Monedero</h1>
 
-    <main class="content flex-grow-1 overflow-auto" aria-label="Tarjetas y bonos">
+    <main class="content flex-grow-1 overflow-auto p-3" aria-label="Tarjetas y bonos">
       <div class="list-group list-group-flush">
         <div class="wallet-card list-group-item d-flex align-items-center gap-3 py-3">
           <span class="wallet-card__icon rounded" aria-hidden="true">🎫</span>
@@ -42,6 +45,8 @@
       </div>
     </main>
 
+    <button type="button" class="btn-add-floating" id="btnNuevaTarjeta" aria-label="Añadir tarjeta o bono">+</button>
+
     <nav class="tabbar d-flex justify-content-around align-items-center" aria-label="Navegación principal">
       <a href="map.html" class="tab text-decoration-none text-center">
         <div class="fs-5" aria-hidden="true">🗺️</div><small>Mapa</small>
@@ -60,6 +65,33 @@
       </a>
     </nav>
   </div>
+  <div class="modal fade" id="modalNuevaTarjeta" tabindex="-1" aria-labelledby="modalNuevaTarjetaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="modalNuevaTarjetaLabel">Añadir tarjeta o bono</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <form id="formTarjeta">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="inputNombreTarjeta" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="inputNombreTarjeta" placeholder="Ej: BonoBus" required>
+            </div>
+            <div>
+              <label for="inputDetalleTarjeta" class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="inputDetalleTarjeta" placeholder="Ej: Bono mensual" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Añadir</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../JavaScript/script.js"></script>
 </body>
 </html>
