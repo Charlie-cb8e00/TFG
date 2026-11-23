@@ -37,6 +37,21 @@ body {
   line-height: 1;
 }
 
+.topbar__auth {
+  padding: 5px 9px;
+  border: 1px solid rgba(32, 32, 32, 0.35);
+  border-radius: 999px;
+  color: #202020;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.topbar__auth:hover {
+  background: rgba(255, 255, 255, 0.45);
+  color: #111827;
+}
+
 .titlebar {
   min-height: 60px;
   display: grid;
@@ -53,6 +68,51 @@ body {
   min-height: 0;
   background: #f8fafc;
   -webkit-overflow-scrolling: touch;
+}
+
+.auth-panel {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 18px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-notice {
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1e3a5f;
+  font-size: 0.82rem;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.auth-tab {
+  padding: 9px 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #1e3a5f;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.auth-tab[aria-pressed="true"] {
+  border-color: #1e3a5f;
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.auth-form[hidden] {
+  display: none;
 }
 
 .btn-add-floating {

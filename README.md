@@ -19,6 +19,7 @@ Frontend/
     stops.html
     wallet.html
     alarms.html
+    auth.html
   CSS/
     styles.css
   JavaScript/
@@ -35,12 +36,13 @@ package.json
 package-lock.json
 ```
 
-- `Frontend/HTML/` contiene las cinco páginas de la aplicación.
+- `Frontend/HTML/` contiene las seis páginas de la aplicación.
 - `Frontend/CSS/styles.css` define el estilo propio compartido por las páginas.
-- `Frontend/JavaScript/script.js` gestiona las alarmas y las tarjetas del
-  monedero.
+- `Frontend/JavaScript/script.js` gestiona las alarmas, las tarjetas del
+  monedero y la interfaz de acceso.
 - `Frontend/JavaScript/bus-stops.js` contiene los datos de la línea 242 y crea
   la lista de paradas cuando se abre esa sección.
+- `Frontend/HTML/auth.html` ofrece la interfaz de inicio de sesión y registro.
 - `Backend/src/main/java/` contiene la aplicación Spring Boot, el endpoint de
   paradas, las entidades JPA y el importador GTFS.
 - `Backend/src/main/resources/application.properties` contiene la configuración
@@ -71,6 +73,17 @@ La página de inicio presenta una parada favorita de ejemplo: Avenida de
 Andalucía, con las líneas 32 y 39. El enlace de esa tarjeta abre `stops.html`.
 El contenido es estático y no se obtiene del backend ni se guarda como
 preferencia de usuario.
+
+### Acceso: `Frontend/HTML/auth.html`
+
+El enlace «Iniciar sesión» de la parte superior derecha de las páginas abre esta
+pantalla. Sus dos formularios se alternan entre inicio de sesión y registro. El
+registro comprueba campos obligatorios, formato del correo, longitud mínima de
+la contraseña y coincidencia de las dos contraseñas.
+
+Esta pantalla es solo una interfaz: no llama a la API, no crea cuentas y no
+guarda credenciales. Al enviar un formulario muestra un aviso para indicar que
+el backend de autenticación todavía no está conectado.
 
 ### Mapa: `Frontend/HTML/map.html`
 
@@ -124,8 +137,8 @@ guardan en almacenamiento local ni en el backend.
 
 ### `Frontend/JavaScript/script.js`
 
-Este archivo contiene las interacciones de alarma y monedero. Se carga en esas
-dos páginas después de Bootstrap.
+Este archivo contiene las interacciones de alarma, monedero y pantalla de
+acceso. Se carga después de Bootstrap en las páginas que necesitan JavaScript.
 
 #### Inicialización
 
@@ -218,6 +231,9 @@ El CSS propio complementa las utilidades de Bootstrap:
 - `.app` centra la aplicación, limita su ancho, establece el fondo y recorta el
   contenido al marco de la interfaz.
 - `.topbar` y `.titlebar` dan formato a la cabecera y al título.
+- `.topbar__auth` da estilo al acceso de la esquina superior derecha.
+- `.auth-panel`, `.auth-notice`, `.auth-tabs`, `.auth-tab` y `.auth-form`
+  componen la pantalla de acceso y sus formularios.
 - `.content` permite que el área principal se reduzca dentro de la columna y se
   desplace verticalmente.
 - `.tabbar`, `.tab` y sus estados `:hover`/`.tab--active` estilizan la

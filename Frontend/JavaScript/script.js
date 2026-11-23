@@ -5,6 +5,7 @@ function irA(event, url) {
 document.addEventListener('DOMContentLoaded', function () {
   activarAlarmas();
   activarMonedero();
+  activarAutenticacion();
 });
 
 function activarAlarmas() {
@@ -138,5 +139,48 @@ function activarMonedero() {
     tarjeta.append(icono, informacion);
     listaTarjetas.append(tarjeta);
     modalTarjeta.hide();
+  });
+}
+
+function activarAutenticacion() {
+  const formularioInicio = document.getElementById('formIniciarSesion');
+  const formularioRegistro = document.getElementById('formRegistro');
+  if (!formularioInicio || !formularioRegistro) return;
+
+  const botonInicio = document.getElementById('tabIniciarSesion');
+  const botonRegistro = document.getElementById('tabRegistro');
+  const aviso = document.getElementById('authNotice');
+  const contrasena = document.getElementById('contrasenaRegistro');
+  const confirmarContrasena = document.getElementById('confirmarContrasena');
+
+  function mostrarFormulario(registroActivo) {
+    formularioInicio.hidden = registroActivo;
+    formularioRegistro.hidden = !registroActivo;
+    botonInicio.setAttribute('aria-pressed', String(!registroActivo));
+    botonRegistro.setAttribute('aria-pressed', String(registroActivo));
+    aviso.hidden = true;
+  }
+
+  function validarContrasenas() {
+    confirmarContrasena.setCustomValidity(
+      confirmarContrasena.value === contrasena.value ? '' : 'Las contraseñas no coinciden.'
+    );
+  }
+
+  botonInicio.addEventListener('click', function () {
+    mostrarFormulario(false);
+  });
+  botonRegistro.addEventListener('click', function () {
+    mostrarFormulario(true);
+  });
+  contrasena.addEventListener('input', validarContrasenas);
+  confirmarContrasena.addEventListener('input', validarContrasenas);
+
+  [formularioInicio, formularioRegistro].forEach(function (formulario) {
+    formulario.addEventListener('submit', function (event) {
+      event.preventDefault();
+      aviso.textContent = 'El backend de autenticación aún no está conectado. No se ha enviado ni guardado ningún dato.';
+      aviso.hidden = false;
+    });
   });
 }
