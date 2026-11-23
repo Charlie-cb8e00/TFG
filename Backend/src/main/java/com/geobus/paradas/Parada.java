@@ -18,23 +18,27 @@ public class Parada {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "codigo_ctmas", unique = true)
+    private Integer codigoCtmas;
+
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "latitud", precision = 9, scale = 6)
+    @Column(name = "latitud")
     private BigDecimal latitud;
 
-    @Column(name = "longitud", precision = 9, scale = 6)
+    @Column(name = "longitud")
     private BigDecimal longitud;
-
-    @Column(name = "linea_id", nullable = false)
-    private Integer lineaId;
 
     public Parada() {
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public Integer getCodigoCtmas() {
+        return codigoCtmas;
     }
 
     public String getNombre() {
@@ -49,8 +53,8 @@ public class Parada {
         return longitud;
     }
 
-    public Integer getLineaId() {
-        return lineaId;
+    public void setCodigoCtmas(Integer codigoCtmas) {
+        this.codigoCtmas = codigoCtmas;
     }
 
     public void setNombre(String nombre) {
@@ -63,9 +67,5 @@ public class Parada {
 
     public void setLongitud(BigDecimal longitud) {
         this.longitud = longitud;
-    }
-
-    public void setLineaId(Integer lineaId) {
-        this.lineaId = lineaId;
     }
 }
