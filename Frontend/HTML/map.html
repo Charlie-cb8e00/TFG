@@ -44,31 +44,73 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-  const center = L.latLng(37.3891, -5.9845);
-  const map = L.map('map');
+  <script src="../JavaScript/bus-stops.js"></script>
+  <script>
+    const map = L.map('map');
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-  const radiusMeters = 5000;
-  const markerCount = 43;
-  const markers = [];
+    const recorridoIda = paradasLinea242
+      .filter(parada => parada.sentido === 1)
+      .sort((a, b) => a.orden - b.orden);
+    const recorridoVuelta = paradasLinea242
+      .filter(parada => parada.sentido === 2)
+      .sort((a, b) => a.orden - b.orden);
 
-  for (let i = 0; i < markerCount; i++) {
-    const angle = (2 * Math.PI * i) / markerCount;
-    const lat = center.lat + (radiusMeters * Math.cos(angle)) / 111320;
-    const lng = center.lng
-      + (radiusMeters * Math.sin(angle))
-      / (111320 * Math.cos((center.lat * Math.PI) / 180));
+    const paradasAgrupadas = new Map();
+    paradasLinea242.forEach(function (parada) {
+      const paradasMismoId = paradasAgrupadas.get(parada.id) || [];
+      paradasMismoId.push(parada);
+      paradasAgrupadas.set(parada.id, paradasMismoId);
+    });
 
-    markers.push(L.marker([lat, lng]).bindPopup(`Parada ${i + 1}`));
-  }
+    const markers = Array.from(paradasAgrupadas.values(), function (paradas) {
+      const parada = paradas[0];
+      const sentidos = new Set(paradas.map(item => item.sentido));
+      const color = sentidos.size > 1 ? '#332766' : sentidos.has(1) ? '#1e3a8a' : '#f59e0b';
+      const popup = document.createElement('div');
+      const nombre = document.createElement('strong');
+      nombre.textContent = parada.nombre;
+      popup.append(nombre);
 
-  const markerGroup = L.featureGroup(markers).addTo(map);
-  map.fitBounds(markerGroup.getBounds().pad(0.1));
-</script>
+      paradas.forEach(function (item) {
+        const detalle = document.createElement('div');
+        detalle.textContent = `Sentido ${item.sentido} · parada ${item.orden}`;
+        popup.append(detalle);
+      });
+
+      return L.circleMarker([parada.lat, parada.lng], {
+        radius: 5,
+        color: '#fff',
+        weight: 1.5,
+        fillColor: color,
+        fillOpacity: 1
+      }).bindPopup(popup);
+    });
+    const markerGroup = L.featureGroup(markers).addTo(map);
+
+    const routeGroup = L.featureGroup([
+      L.polyline(recorridoIda.map(parada => [parada.lat, parada.lng]), {
+        color: '#1e3a8a',
+        weight: 5,
+        opacity: 0.9
+      })
+        .bindPopup('Ida: Dos Hermanas → Sevilla · línea 242')
+        .bindTooltip('Ida: Dos Hermanas → Sevilla'),
+      L.polyline(recorridoVuelta.map(parada => [parada.lat, parada.lng]), {
+        color: '#f59e0b',
+        weight: 5,
+        opacity: 0.9,
+        dashArray: '8 8'
+      })
+        .bindPopup('Vuelta: Sevilla → Dos Hermanas · línea 242')
+        .bindTooltip('Vuelta: Sevilla → Dos Hermanas')
+    ]).addTo(map);
+
+    map.fitBounds(L.featureGroup([markerGroup, routeGroup]).getBounds().pad(0.1));
+  </script>
 </body>
 </html>

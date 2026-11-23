@@ -11,6 +11,7 @@ body {
 }
 
 .app {
+  position: relative;
   width: 100%;
   max-width: 420px;
   min-height: 100vh;
@@ -52,6 +53,40 @@ body {
   min-height: 0;
   background: #f8fafc;
   -webkit-overflow-scrolling: touch;
+}
+
+.btn-add-floating {
+  position: absolute;
+  right: 20px;
+  bottom: calc(4.75rem + env(safe-area-inset-bottom));
+  z-index: 2;
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  padding: 0 0 3px;
+  border: 0;
+  border-radius: 50%;
+  background: #dc2626;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-add-floating:hover {
+  background: #b91c1c;
+}
+
+.btn-add-floating:active {
+  transform: scale(0.94);
+}
+
+.btn-add-floating:focus-visible {
+  outline: 3px solid #1e3a8a;
+  outline-offset: 3px;
 }
 
 .tabbar {
